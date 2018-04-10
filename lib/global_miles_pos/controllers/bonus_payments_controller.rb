@@ -16,21 +16,17 @@ module GlobalMilesPos
 
     # After getting customer info's and RecognitionID to start Payment with
     # Miles Use this API.
-    # After calling this API successfully OTP code send to cutomer GSM number.
+    # After calling this API successfully OTP code send to customer GSM number.
     # This OTP must be used with Complete API in order to complete sale.
-    # @param [String] accept Required parameter: It advertises which content
-    # type is able to understand.
-    # @param [String] content_type Required parameter: It tells the client what
-    # the content type of the returned.
-    # @param [String] authorization Required parameter: It includes OAuth2
-    # token.
+    # You can try this API with configuring client parameters in Console Tab
+    # below. Test OAuthClientId is
+    # 552698b91cae424b9b3ddee14eea6faf564f1b5fb7764854b73b2763e0e68c66
+    # and OAuthClientSecret is
+    # d0a8b00a3d754ea5a013465bcc23f6efa89e9dfb080a4f4eb460e3306653d92b
     # @param [StartBonusPaymentRequest] body Required parameter: The body of the
     # request.
     # @return StartBonusPaymentResponse response from the API call
-    def create_start_bonus_payment(accept,
-                                   content_type,
-                                   authorization,
-                                   body)
+    def create_start_bonus_payment(body)
       # Prepare query url.
       _query_builder = Configuration.get_base_uri
       _query_builder << '/v1/pos/StartBonusPayment'
@@ -38,9 +34,8 @@ module GlobalMilesPos
 
       # Prepare headers.
       _headers = {
-        'Accept' => accept,
-        'Content-Type' => content_type,
-        'Authorization' => authorization
+        'accept' => 'application/json',
+        'content-type' => 'application/json; charset=utf-8'
       }
 
       # Prepare and execute HttpRequest.
@@ -58,21 +53,17 @@ module GlobalMilesPos
       StartBonusPaymentResponse.from_hash(decoded)
     end
 
-    # In order to finalise payment with Miles use this API.Use the OTP number 
+    # In order to finalize payment with Miles use this API. Use the OTP number 
     # which is send to user GSM on the Request body.
-    # @param [String] accept Required parameter: It advertises which content
-    # type is able to understand.
-    # @param [String] content_type Required parameter: It tells the client what
-    # the content type of the returned.
-    # @param [String] authorization Required parameter: It includes OAuth2
-    # token.
+    # You can try this API with configuring client parameters in Console Tab
+    # below. Test OAuthClientId is
+    # 552698b91cae424b9b3ddee14eea6faf564f1b5fb7764854b73b2763e0e68c66
+    # and OAuthClientSecret is
+    # d0a8b00a3d754ea5a013465bcc23f6efa89e9dfb080a4f4eb460e3306653d92b
     # @param [CompleteBonusPaymentRequest] body Required parameter: The body of
     # the request.
     # @return CompleteBonusPaymentResponse response from the API call
-    def create_complete_bonus_payment(accept,
-                                      content_type,
-                                      authorization,
-                                      body)
+    def create_complete_bonus_payment(body)
       # Prepare query url.
       _query_builder = Configuration.get_base_uri
       _query_builder << '/v1/pos/CompleteBonusPayment'
@@ -80,9 +71,8 @@ module GlobalMilesPos
 
       # Prepare headers.
       _headers = {
-        'Accept' => accept,
-        'Content-Type' => content_type,
-        'Authorization' => authorization
+        'accept' => 'application/json',
+        'content-type' => 'application/json; charset=utf-8'
       }
 
       # Prepare and execute HttpRequest.
@@ -102,19 +92,15 @@ module GlobalMilesPos
 
     # In order to cancel payment with miles you can use this API. It allows to
     # cancel payment only related GSM and terminal ID numbers.
-    # @param [String] accept Required parameter: It advertises which content
-    # type is able to understand.
-    # @param [String] content_type Required parameter: It tells the client what
-    # the content type of the returned.
-    # @param [String] authorization Required parameter: It includes OAuth2
-    # token.
+    # You can try this API with configuring client parameters in Console Tab
+    # below. Test OAuthClientId is
+    # 552698b91cae424b9b3ddee14eea6faf564f1b5fb7764854b73b2763e0e68c66
+    # and OAuthClientSecret is
+    # d0a8b00a3d754ea5a013465bcc23f6efa89e9dfb080a4f4eb460e3306653d92b
     # @param [CancelBonusPaymentRequest] body Required parameter: The body of
     # the request.
     # @return CancelBonusPaymentResponse response from the API call
-    def create_cancel_bonus_payment(accept,
-                                    content_type,
-                                    authorization,
-                                    body)
+    def create_cancel_bonus_payment(body)
       # Prepare query url.
       _query_builder = Configuration.get_base_uri
       _query_builder << '/v1/pos/CancelBonusPayment'
@@ -122,9 +108,8 @@ module GlobalMilesPos
 
       # Prepare headers.
       _headers = {
-        'Accept' => accept,
-        'Content-Type' => content_type,
-        'Authorization' => authorization
+        'accept' => 'application/json',
+        'content-type' => 'application/json; charset=utf-8'
       }
 
       # Prepare and execute HttpRequest.
@@ -144,19 +129,15 @@ module GlobalMilesPos
 
     # Before cancelling the payment with Miles this API is used to list the
     # related sale.
-    # @param [String] accept Required parameter: It advertises which content
-    # type is able to understand.
-    # @param [String] content_type Required parameter: It tells the client what
-    # the content type of the returned.
-    # @param [String] authorization Required parameter: It includes OAuth2
-    # token.
+    # You can try this API with configuring client parameters in Console Tab
+    # below. Test OAuthClientId is
+    # 552698b91cae424b9b3ddee14eea6faf564f1b5fb7764854b73b2763e0e68c66
+    # and OAuthClientSecret is
+    # d0a8b00a3d754ea5a013465bcc23f6efa89e9dfb080a4f4eb460e3306653d92b
     # @param [GetBonusProvisionsRequest] body Required parameter: The body of
     # the request.
     # @return GetBonusProvisionsResponse response from the API call
-    def create_get_bonus_provisions(accept,
-                                    content_type,
-                                    authorization,
-                                    body)
+    def create_get_bonus_provisions(body)
       # Prepare query url.
       _query_builder = Configuration.get_base_uri
       _query_builder << '/v1/pos/GetBonusProvisions'
@@ -164,9 +145,8 @@ module GlobalMilesPos
 
       # Prepare headers.
       _headers = {
-        'Accept' => accept,
-        'Content-Type' => content_type,
-        'Authorization' => authorization
+        'accept' => 'application/json',
+        'content-type' => 'application/json; charset=utf-8'
       }
 
       # Prepare and execute HttpRequest.

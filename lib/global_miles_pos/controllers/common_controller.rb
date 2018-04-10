@@ -17,19 +17,15 @@ module GlobalMilesPos
     # This API will help you to retrieve customer's mil quantity and unique
     # identifier value.Unique identifier value must be used by Transaction
     # Result API in order to complete shopping.
-    # @param [String] accept Required parameter: It advertises which content
-    # type is able to understand.
-    # @param [String] content_type Required parameter: It tells the client what
-    # the content type of the returned.
-    # @param [String] authorization Required parameter: It includes OAuth2
-    # token.
+    # You can try this API with configuring client parameters in Console Tab
+    # below. Test OAuthClientId is
+    # 552698b91cae424b9b3ddee14eea6faf564f1b5fb7764854b73b2763e0e68c66
+    # and OAuthClientSecret is
+    # d0a8b00a3d754ea5a013465bcc23f6efa89e9dfb080a4f4eb460e3306653d92b
     # @param [GetCustomerInfoRequest] body Required parameter: The body of the
     # request.
     # @return GetCustomerInfoResponse response from the API call
-    def create_get_customer_info(accept,
-                                 content_type,
-                                 authorization,
-                                 body)
+    def create_get_customer_info(body)
       # Prepare query url.
       _query_builder = Configuration.get_base_uri
       _query_builder << '/v1/pos/GetCustomerInfo'
@@ -37,9 +33,8 @@ module GlobalMilesPos
 
       # Prepare headers.
       _headers = {
-        'Accept' => accept,
-        'Content-Type' => content_type,
-        'Authorization' => authorization
+        'accept' => 'application/json',
+        'content-type' => 'application/json; charset=utf-8'
       }
 
       # Prepare and execute HttpRequest.

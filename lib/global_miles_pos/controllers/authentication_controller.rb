@@ -16,15 +16,9 @@ module GlobalMilesPos
 
     # An access token will allow you to make requests for the system. We support
     # only one type of token: client_credentials
-    # @param [String] accept Required parameter: It advertises which content
-    # type is able to understand.
-    # @param [String] content_type Required parameter: It tells the client what
-    # the content type of the returned.
     # @param [OAuthRequest] body Required parameter: The body of the request.
     # @return OAuthResponse response from the API call
-    def create_authentication(accept,
-                              content_type,
-                              body)
+    def create_authentication(body)
       # Prepare query url.
       _query_builder = Configuration.get_base_uri
       _query_builder << '/oauth/token'
@@ -32,8 +26,8 @@ module GlobalMilesPos
 
       # Prepare headers.
       _headers = {
-        'Accept' => accept,
-        'Content-Type' => content_type
+        'accept' => 'application/json',
+        'content-type' => 'application/json; charset=utf-8'
       }
 
       # Prepare and execute HttpRequest.

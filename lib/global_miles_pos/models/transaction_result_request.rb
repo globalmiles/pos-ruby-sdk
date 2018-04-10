@@ -24,11 +24,11 @@ module GlobalMilesPos
     # @return [Integer]
     attr_accessor :zno
 
-    # session based İdentification Number .
+    # Session based Identification Number .
     # @return [Integer]
     attr_accessor :recognition_id
 
-    # Eku no(Electronic Journal)
+    # Eku no (Electronic Journal)
     # @return [Integer]
     attr_accessor :eku_no
 
@@ -36,7 +36,7 @@ module GlobalMilesPos
     # @return [String]
     attr_accessor :receipt_type
 
-    # it should be  GGAAYYYYSSDD formated.
+    # It should be  GGAAYYYYSSDD formatted.
     # @return [String]
     attr_accessor :receipt_date_time
 

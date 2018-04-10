@@ -223,34 +223,28 @@ paymentSystems_controller = client.payment_systems
 ### <a name="create_transaction_result"></a>![Method: ](https://apidocs.io/img/method.png ".PaymentSystemsController.create_transaction_result") create_transaction_result
 
 > After getting customer info by Get customer Info API and finished the shopping procedure in POS terminal, use this API to complete transaction.
+> 
+> You can try this API with configuring client parameters in Console Tab below. Test OAuthClientId is 552698b91cae424b9b3ddee14eea6faf564f1b5fb7764854b73b2763e0e68c66
+> and OAuthClientSecret is d0a8b00a3d754ea5a013465bcc23f6efa89e9dfb080a4f4eb460e3306653d92b
 
 
 ```ruby
-def create_transaction_result(accept,
-                                  content_type,
-                                  authorization,
-                                  body); end
+def create_transaction_result(body); end
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| accept |  ``` Required ```  ``` DefaultValue ```  | It advertises which content type is able to understand. |
-| content_type |  ``` Required ```  ``` DefaultValue ```  | It tells the client what the content type of the returned. |
-| authorization |  ``` Required ```  | It includes OAuth2 token. |
 | body |  ``` Required ```  | The body of the request. |
 
 
 #### Example Usage
 
 ```ruby
-accept = 'application/json'
-content_type = 'application/json'
-authorization = 'Authorization'
 body = TransactionResultRequest.new
 
-result = paymentSystems_controller.create_transaction_result(accept, content_type, authorization, body)
+result = paymentSystems_controller.create_transaction_result(body)
 
 ```
 
@@ -275,28 +269,22 @@ authentication_controller = client.authentication
 
 
 ```ruby
-def create_authentication(accept,
-                              content_type,
-                              body); end
+def create_authentication(body); end
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| accept |  ``` Required ```  ``` DefaultValue ```  | It advertises which content type is able to understand. |
-| content_type |  ``` Required ```  ``` DefaultValue ```  | It tells the client what the content type of the returned. |
 | body |  ``` Required ```  | The body of the request. |
 
 
 #### Example Usage
 
 ```ruby
-accept = 'application/json'
-content_type = 'application/json'
 body = OAuthRequest.new
 
-result = authentication_controller.create_authentication(accept, content_type, body)
+result = authentication_controller.create_authentication(body)
 
 ```
 
@@ -316,34 +304,28 @@ common_controller = client.common
 ### <a name="create_get_customer_info"></a>![Method: ](https://apidocs.io/img/method.png ".CommonController.create_get_customer_info") create_get_customer_info
 
 > This API will help you to retrieve customer's mil quantity and unique identifier value.Unique identifier value must be used by Transaction Result API in order to complete shopping.
+> 
+> You can try this API with configuring client parameters in Console Tab below. Test OAuthClientId is 552698b91cae424b9b3ddee14eea6faf564f1b5fb7764854b73b2763e0e68c66
+> and OAuthClientSecret is d0a8b00a3d754ea5a013465bcc23f6efa89e9dfb080a4f4eb460e3306653d92b
 
 
 ```ruby
-def create_get_customer_info(accept,
-                                 content_type,
-                                 authorization,
-                                 body); end
+def create_get_customer_info(body); end
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| accept |  ``` Required ```  ``` DefaultValue ```  | It advertises which content type is able to understand. |
-| content_type |  ``` Required ```  ``` DefaultValue ```  | It tells the client what the content type of the returned. |
-| authorization |  ``` Required ```  | It includes OAuth2 token. |
 | body |  ``` Required ```  | The body of the request. |
 
 
 #### Example Usage
 
 ```ruby
-accept = 'application/json'
-content_type = 'application/json'
-authorization = 'Authorization'
 body = GetCustomerInfoRequest.new
 
-result = common_controller.create_get_customer_info(accept, content_type, authorization, body)
+result = common_controller.create_get_customer_info(body)
 
 ```
 
@@ -363,70 +345,58 @@ bonusPayments_controller = client.bonus_payments
 ### <a name="create_start_bonus_payment"></a>![Method: ](https://apidocs.io/img/method.png ".BonusPaymentsController.create_start_bonus_payment") create_start_bonus_payment
 
 > After getting customer info's and RecognitionID to start Payment with Miles Use this API.
-> After calling this API successfully OTP code send to cutomer GSM number. This OTP must be used with Complete API in order to complete sale.
+> After calling this API successfully OTP code send to customer GSM number. This OTP must be used with Complete API in order to complete sale.
+> 
+> You can try this API with configuring client parameters in Console Tab below. Test OAuthClientId is 552698b91cae424b9b3ddee14eea6faf564f1b5fb7764854b73b2763e0e68c66
+> and OAuthClientSecret is d0a8b00a3d754ea5a013465bcc23f6efa89e9dfb080a4f4eb460e3306653d92b
 
 
 ```ruby
-def create_start_bonus_payment(accept,
-                                   content_type,
-                                   authorization,
-                                   body); end
+def create_start_bonus_payment(body); end
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| accept |  ``` Required ```  ``` DefaultValue ```  | It advertises which content type is able to understand. |
-| content_type |  ``` Required ```  ``` DefaultValue ```  | It tells the client what the content type of the returned. |
-| authorization |  ``` Required ```  | It includes OAuth2 token. |
 | body |  ``` Required ```  | The body of the request. |
 
 
 #### Example Usage
 
 ```ruby
-accept = 'application/json'
-content_type = 'application/json'
-authorization = 'Authorization'
 body = StartBonusPaymentRequest.new
 
-result = bonusPayments_controller.create_start_bonus_payment(accept, content_type, authorization, body)
+result = bonusPayments_controller.create_start_bonus_payment(body)
 
 ```
 
 
 ### <a name="create_complete_bonus_payment"></a>![Method: ](https://apidocs.io/img/method.png ".BonusPaymentsController.create_complete_bonus_payment") create_complete_bonus_payment
 
-> In order to finalise payment with Miles use this API.Use the OTP number  which is send to user GSM on the Request body.
+> In order to finalize payment with Miles use this API. Use the OTP number  which is send to user GSM on the Request body.
+> 
+> You can try this API with configuring client parameters in Console Tab below. Test OAuthClientId is 552698b91cae424b9b3ddee14eea6faf564f1b5fb7764854b73b2763e0e68c66
+> and OAuthClientSecret is d0a8b00a3d754ea5a013465bcc23f6efa89e9dfb080a4f4eb460e3306653d92b
 
 
 ```ruby
-def create_complete_bonus_payment(accept,
-                                      content_type,
-                                      authorization,
-                                      body); end
+def create_complete_bonus_payment(body); end
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| accept |  ``` Required ```  ``` DefaultValue ```  | It advertises which content type is able to understand. |
-| content_type |  ``` Required ```  ``` DefaultValue ```  | It tells the client what the content type of the returned. |
-| authorization |  ``` Required ```  | It includes OAuth2 token. |
 | body |  ``` Required ```  | The body of the request. |
 
 
 #### Example Usage
 
 ```ruby
-accept = 'application/json'
-content_type = 'application/json'
-authorization = 'Authorization'
 body = CompleteBonusPaymentRequest.new
 
-result = bonusPayments_controller.create_complete_bonus_payment(accept, content_type, authorization, body)
+result = bonusPayments_controller.create_complete_bonus_payment(body)
 
 ```
 
@@ -434,34 +404,28 @@ result = bonusPayments_controller.create_complete_bonus_payment(accept, content_
 ### <a name="create_cancel_bonus_payment"></a>![Method: ](https://apidocs.io/img/method.png ".BonusPaymentsController.create_cancel_bonus_payment") create_cancel_bonus_payment
 
 > In order to cancel payment with miles you can use this API. It allows to cancel payment only related GSM and terminal ID numbers.
+> 
+> You can try this API with configuring client parameters in Console Tab below. Test OAuthClientId is 552698b91cae424b9b3ddee14eea6faf564f1b5fb7764854b73b2763e0e68c66
+> and OAuthClientSecret is d0a8b00a3d754ea5a013465bcc23f6efa89e9dfb080a4f4eb460e3306653d92b
 
 
 ```ruby
-def create_cancel_bonus_payment(accept,
-                                    content_type,
-                                    authorization,
-                                    body); end
+def create_cancel_bonus_payment(body); end
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| accept |  ``` Required ```  ``` DefaultValue ```  | It advertises which content type is able to understand. |
-| content_type |  ``` Required ```  ``` DefaultValue ```  | It tells the client what the content type of the returned. |
-| authorization |  ``` Required ```  | It includes OAuth2 token. |
 | body |  ``` Required ```  | The body of the request. |
 
 
 #### Example Usage
 
 ```ruby
-accept = 'application/json'
-content_type = 'application/json'
-authorization = 'Authorization'
 body = CancelBonusPaymentRequest.new
 
-result = bonusPayments_controller.create_cancel_bonus_payment(accept, content_type, authorization, body)
+result = bonusPayments_controller.create_cancel_bonus_payment(body)
 
 ```
 
@@ -469,34 +433,28 @@ result = bonusPayments_controller.create_cancel_bonus_payment(accept, content_ty
 ### <a name="create_get_bonus_provisions"></a>![Method: ](https://apidocs.io/img/method.png ".BonusPaymentsController.create_get_bonus_provisions") create_get_bonus_provisions
 
 > Before cancelling the payment with Miles this API is used to list the related sale.
+> 
+> You can try this API with configuring client parameters in Console Tab below. Test OAuthClientId is 552698b91cae424b9b3ddee14eea6faf564f1b5fb7764854b73b2763e0e68c66
+> and OAuthClientSecret is d0a8b00a3d754ea5a013465bcc23f6efa89e9dfb080a4f4eb460e3306653d92b
 
 
 ```ruby
-def create_get_bonus_provisions(accept,
-                                    content_type,
-                                    authorization,
-                                    body); end
+def create_get_bonus_provisions(body); end
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| accept |  ``` Required ```  ``` DefaultValue ```  | It advertises which content type is able to understand. |
-| content_type |  ``` Required ```  ``` DefaultValue ```  | It tells the client what the content type of the returned. |
-| authorization |  ``` Required ```  | It includes OAuth2 token. |
 | body |  ``` Required ```  | The body of the request. |
 
 
 #### Example Usage
 
 ```ruby
-accept = 'application/json'
-content_type = 'application/json'
-authorization = 'Authorization'
 body = GetBonusProvisionsRequest.new
 
-result = bonusPayments_controller.create_get_bonus_provisions(accept, content_type, authorization, body)
+result = bonusPayments_controller.create_get_bonus_provisions(body)
 
 ```
 
@@ -505,4 +463,3 @@ result = bonusPayments_controller.create_get_bonus_provisions(accept, content_ty
 
 
 
-# pos-ruby-sdk
