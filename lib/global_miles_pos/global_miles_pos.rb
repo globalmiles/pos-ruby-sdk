@@ -4,10 +4,10 @@
 module GlobalMilesPos
   #  global_miles_pos client class.
   class GlobalMilesPos
-    # Singleton access to payment_systems controller.
-    # @return [PaymentSystemsController] Returns the controller instance.
-    def payment_systems
-      PaymentSystemsController.instance
+    # Singleton access to earn_miles controller.
+    # @return [EarnMilesController] Returns the controller instance.
+    def earn_miles
+      EarnMilesController.instance
     end
 
     # Singleton access to authentication controller.
@@ -22,10 +22,10 @@ module GlobalMilesPos
       CommonController.instance
     end
 
-    # Singleton access to bonus_payments controller.
-    # @return [BonusPaymentsController] Returns the controller instance.
-    def bonus_payments
-      BonusPaymentsController.instance
+    # Singleton access to pay_with_miles controller.
+    # @return [PayWithMilesController] Returns the controller instance.
+    def pay_with_miles
+      PayWithMilesController.instance
     end
 
     # Singleton access to o_auth_authorization controller.
