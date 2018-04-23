@@ -205,24 +205,24 @@ end
 
 ## <a name="list_of_controllers"></a>List of Controllers
 
-* [PaymentSystemsController](#payment_systems_controller)
+* [EarnMilesController](#earn_miles_controller)
 * [AuthenticationController](#authentication_controller)
 * [CommonController](#common_controller)
-* [BonusPaymentsController](#bonus_payments_controller)
+* [PayWithMilesController](#pay_with_miles_controller)
 
-## <a name="payment_systems_controller"></a>![Class: ](https://apidocs.io/img/class.png ".PaymentSystemsController") PaymentSystemsController
+## <a name="earn_miles_controller"></a>![Class: ](https://apidocs.io/img/class.png ".EarnMilesController") EarnMilesController
 
 ### Get singleton instance
 
-The singleton instance of the ``` PaymentSystemsController ``` class can be accessed from the API Client.
+The singleton instance of the ``` EarnMilesController ``` class can be accessed from the API Client.
 
 ```ruby
-paymentSystems_controller = client.payment_systems
+earnMiles_controller = client.earn_miles
 ```
 
-### <a name="create_transaction_result"></a>![Method: ](https://apidocs.io/img/method.png ".PaymentSystemsController.create_transaction_result") create_transaction_result
+### <a name="create_transaction_result"></a>![Method: ](https://apidocs.io/img/method.png ".EarnMilesController.create_transaction_result") create_transaction_result
 
-> After getting customer info by Get customer Info API and finished the shopping procedure in POS terminal, use this API to complete transaction.
+> After getting customer info by Get Customer Info endpoint and finished the shopping procedure in POS terminal, use this endpoint to complete transaction.
 > 
 > You can try this API with configuring client parameters in Console Tab below. Test OAuthClientId is 552698b91cae424b9b3ddee14eea6faf564f1b5fb7764854b73b2763e0e68c66
 > and OAuthClientSecret is d0a8b00a3d754ea5a013465bcc23f6efa89e9dfb080a4f4eb460e3306653d92b
@@ -244,7 +244,7 @@ def create_transaction_result(body); end
 ```ruby
 body = TransactionResultRequest.new
 
-result = paymentSystems_controller.create_transaction_result(body)
+result = earnMiles_controller.create_transaction_result(body)
 
 ```
 
@@ -303,7 +303,7 @@ common_controller = client.common
 
 ### <a name="create_get_customer_info"></a>![Method: ](https://apidocs.io/img/method.png ".CommonController.create_get_customer_info") create_get_customer_info
 
-> This API will help you to retrieve customer's mil quantity and unique identifier value.Unique identifier value must be used by Transaction Result API in order to complete shopping.
+> This API will help you to get customer's mil quantity and unique identifier value. Unique identifier value must be used by Transaction Result API in order to complete shopping.
 > 
 > You can try this API with configuring client parameters in Console Tab below. Test OAuthClientId is 552698b91cae424b9b3ddee14eea6faf564f1b5fb7764854b73b2763e0e68c66
 > and OAuthClientSecret is d0a8b00a3d754ea5a013465bcc23f6efa89e9dfb080a4f4eb460e3306653d92b
@@ -332,17 +332,17 @@ result = common_controller.create_get_customer_info(body)
 
 [Back to List of Controllers](#list_of_controllers)
 
-## <a name="bonus_payments_controller"></a>![Class: ](https://apidocs.io/img/class.png ".BonusPaymentsController") BonusPaymentsController
+## <a name="pay_with_miles_controller"></a>![Class: ](https://apidocs.io/img/class.png ".PayWithMilesController") PayWithMilesController
 
 ### Get singleton instance
 
-The singleton instance of the ``` BonusPaymentsController ``` class can be accessed from the API Client.
+The singleton instance of the ``` PayWithMilesController ``` class can be accessed from the API Client.
 
 ```ruby
-bonusPayments_controller = client.bonus_payments
+payWithMiles_controller = client.pay_with_miles
 ```
 
-### <a name="create_start_bonus_payment"></a>![Method: ](https://apidocs.io/img/method.png ".BonusPaymentsController.create_start_bonus_payment") create_start_bonus_payment
+### <a name="create_start_mile_payment"></a>![Method: ](https://apidocs.io/img/method.png ".PayWithMilesController.create_start_mile_payment") create_start_mile_payment
 
 > After getting customer info's and RecognitionID to start Payment with Miles Use this API.
 > After calling this API successfully OTP code send to customer GSM number. This OTP must be used with Complete API in order to complete sale.
@@ -352,7 +352,7 @@ bonusPayments_controller = client.bonus_payments
 
 
 ```ruby
-def create_start_bonus_payment(body); end
+def create_start_mile_payment(body); end
 ```
 
 #### Parameters
@@ -365,14 +365,14 @@ def create_start_bonus_payment(body); end
 #### Example Usage
 
 ```ruby
-body = StartBonusPaymentRequest.new
+body = StartMilePaymentRequest.new
 
-result = bonusPayments_controller.create_start_bonus_payment(body)
+result = payWithMiles_controller.create_start_mile_payment(body)
 
 ```
 
 
-### <a name="create_complete_bonus_payment"></a>![Method: ](https://apidocs.io/img/method.png ".BonusPaymentsController.create_complete_bonus_payment") create_complete_bonus_payment
+### <a name="create_complete_mile_payment"></a>![Method: ](https://apidocs.io/img/method.png ".PayWithMilesController.create_complete_mile_payment") create_complete_mile_payment
 
 > In order to finalize payment with Miles use this API. Use the OTP number  which is send to user GSM on the Request body.
 > 
@@ -381,7 +381,7 @@ result = bonusPayments_controller.create_start_bonus_payment(body)
 
 
 ```ruby
-def create_complete_bonus_payment(body); end
+def create_complete_mile_payment(body); end
 ```
 
 #### Parameters
@@ -394,14 +394,14 @@ def create_complete_bonus_payment(body); end
 #### Example Usage
 
 ```ruby
-body = CompleteBonusPaymentRequest.new
+body = CompleteMilePaymentRequest.new
 
-result = bonusPayments_controller.create_complete_bonus_payment(body)
+result = payWithMiles_controller.create_complete_mile_payment(body)
 
 ```
 
 
-### <a name="create_cancel_bonus_payment"></a>![Method: ](https://apidocs.io/img/method.png ".BonusPaymentsController.create_cancel_bonus_payment") create_cancel_bonus_payment
+### <a name="create_cancel_mile_payment"></a>![Method: ](https://apidocs.io/img/method.png ".PayWithMilesController.create_cancel_mile_payment") create_cancel_mile_payment
 
 > In order to cancel payment with miles you can use this API. It allows to cancel payment only related GSM and terminal ID numbers.
 > 
@@ -410,7 +410,7 @@ result = bonusPayments_controller.create_complete_bonus_payment(body)
 
 
 ```ruby
-def create_cancel_bonus_payment(body); end
+def create_cancel_mile_payment(body); end
 ```
 
 #### Parameters
@@ -423,14 +423,14 @@ def create_cancel_bonus_payment(body); end
 #### Example Usage
 
 ```ruby
-body = CancelBonusPaymentRequest.new
+body = CancelMilePaymentRequest.new
 
-result = bonusPayments_controller.create_cancel_bonus_payment(body)
+result = payWithMiles_controller.create_cancel_mile_payment(body)
 
 ```
 
 
-### <a name="create_get_bonus_provisions"></a>![Method: ](https://apidocs.io/img/method.png ".BonusPaymentsController.create_get_bonus_provisions") create_get_bonus_provisions
+### <a name="create_get_mile_provisions"></a>![Method: ](https://apidocs.io/img/method.png ".PayWithMilesController.create_get_mile_provisions") create_get_mile_provisions
 
 > Before cancelling the payment with Miles this API is used to list the related sale.
 > 
@@ -439,7 +439,7 @@ result = bonusPayments_controller.create_cancel_bonus_payment(body)
 
 
 ```ruby
-def create_get_bonus_provisions(body); end
+def create_get_mile_provisions(body); end
 ```
 
 #### Parameters
@@ -452,9 +452,9 @@ def create_get_bonus_provisions(body); end
 #### Example Usage
 
 ```ruby
-body = GetBonusProvisionsRequest.new
+body = GetMileProvisionsRequest.new
 
-result = bonusPayments_controller.create_get_bonus_provisions(body)
+result = payWithMiles_controller.create_get_mile_provisions(body)
 
 ```
 

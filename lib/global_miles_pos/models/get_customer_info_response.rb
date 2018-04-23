@@ -4,25 +4,25 @@
 module GlobalMilesPos
   # GetCustomerInfoResponse Model.
   class GetCustomerInfoResponse < BaseModel
-    # 0 ise başarılı, 1 veya daha büyük ise başarısız
+    # 0  Success, 1 and bigger than 1 unsuccessful
     # @return [Integer]
     attr_accessor :return_code
 
-    # Başarılı ise boş, eğer hata varsa; hata mesajını içerir.
+    # if success return is empty. if unsuccessful it returns error message
     # @return [String]
     attr_accessor :return_desc
 
-    # Kullanıcının GlobalMiles sistemindeki unique identifier değeri
+    # Session based user identification number
     # @return [Integer]
     attr_accessor :recognition_id
 
-    # Müşterinin bu işlemde kullanabileceği puanın TL karşılığıdır. Son iki
-    # karakter kuruşları temsil eder. Örneğin: 12.56 TL == 1256
+    # The available points that the customer can use in this transaction is in
+    # USD which is calculated from customer's current miles. EX: 12.56 USD ==
+    # 1256
     # @return [Integer]
     attr_accessor :available_point
 
-    # Sadakat indirimi. Son iki karakter kuruşları temsil eder. Örneğin: 90.50
-    # TL == 9050
+    # Loyalty discounted price ex: 90.50 USD == 9050
     # @return [Integer]
     attr_accessor :loyalty_discounted_price
 

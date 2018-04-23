@@ -2,8 +2,8 @@
 # ( https://apimatic.io ).
 
 module GlobalMilesPos
-  # GetBonusProvisionsResponse Model.
-  class GetBonusProvisionsResponse < BaseModel
+  # StartMilePaymentResponse Model.
+  class StartMilePaymentResponse < BaseModel
     # 0  Success, 1 and bigger than 1 unsuccessful
     # @return [Integer]
     attr_accessor :return_code
@@ -12,25 +12,32 @@ module GlobalMilesPos
     # @return [String]
     attr_accessor :return_desc
 
-    # if success return is empty. if unsuccessful it returns error message
-    # @return [List of MileProvision]
-    attr_accessor :bonus_provisions
+    # Provision ID for the payment
+    # @return [String]
+    attr_accessor :bonus_payment_provision_id
+
+    # Is a one-time password required?
+    # @return [Boolean]
+    attr_accessor :otp_needed
 
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
       @_hash['return_code'] = 'returnCode'
       @_hash['return_desc'] = 'returnDesc'
-      @_hash['bonus_provisions'] = 'bonusProvisions'
+      @_hash['bonus_payment_provision_id'] = 'bonusPaymentProvisionId'
+      @_hash['otp_needed'] = 'OTPNeeded'
       @_hash
     end
 
     def initialize(return_code = nil,
                    return_desc = nil,
-                   bonus_provisions = nil)
+                   bonus_payment_provision_id = nil,
+                   otp_needed = nil)
       @return_code = return_code
       @return_desc = return_desc
-      @bonus_provisions = bonus_provisions
+      @bonus_payment_provision_id = bonus_payment_provision_id
+      @otp_needed = otp_needed
     end
 
     # Creates an instance of the object from a hash.
@@ -40,19 +47,14 @@ module GlobalMilesPos
       # Extract variables from the hash.
       return_code = hash['returnCode']
       return_desc = hash['returnDesc']
-      # Parameter is an array, so we need to iterate through it
-      bonus_provisions = nil
-      unless hash['bonusProvisions'].nil?
-        bonus_provisions = []
-        hash['bonusProvisions'].each do |structure|
-          bonus_provisions << (MileProvision.from_hash(structure) if structure)
-        end
-      end
+      bonus_payment_provision_id = hash['bonusPaymentProvisionId']
+      otp_needed = hash['OTPNeeded']
 
       # Create object from extracted values.
-      GetBonusProvisionsResponse.new(return_code,
-                                     return_desc,
-                                     bonus_provisions)
+      StartMilePaymentResponse.new(return_code,
+                                   return_desc,
+                                   bonus_payment_provision_id,
+                                   otp_needed)
     end
   end
 end

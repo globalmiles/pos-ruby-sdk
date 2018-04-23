@@ -4,11 +4,11 @@
 module GlobalMilesPos
   # TransactionResultResponse Model.
   class TransactionResultResponse < BaseModel
-    # 0 ise başarılı, 1 veya daha büyük ise başarısız
+    # 0  Success, 1 and bigger than 1 unsuccessful
     # @return [Integer]
     attr_accessor :return_code
 
-    # Başarılı ise boş, eğer hata varsa; hata mesajını içerir.
+    # if success return is empty. if unsuccessful it returns error message
     # @return [String]
     attr_accessor :return_desc
 
