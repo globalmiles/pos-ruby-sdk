@@ -4,31 +4,31 @@
 module GlobalMilesPos
   # Discount Model.
   class Discount < BaseModel
-    # TODO: Write general description for this method
+    # Origin of the discount. 1: Global Miles, 2: Other.
     # @return [String]
-    attr_accessor :orijin
+    attr_accessor :origin
 
-    # TODO: Write general description for this method
+    # Type of the discount. 0: amount based, 1: rate based.
     # @return [String]
     attr_accessor :type
 
-    # TODO: Write general description for this method
-    # @return [String]
+    # Value of the discount.
+    # @return [Float]
     attr_accessor :value
 
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
-      @_hash['orijin'] = 'orijin'
+      @_hash['origin'] = 'origin'
       @_hash['type'] = 'type'
       @_hash['value'] = 'value'
       @_hash
     end
 
-    def initialize(orijin = nil,
+    def initialize(origin = nil,
                    type = nil,
                    value = nil)
-      @orijin = orijin
+      @origin = origin
       @type = type
       @value = value
     end
@@ -38,12 +38,12 @@ module GlobalMilesPos
       return nil unless hash
 
       # Extract variables from the hash.
-      orijin = hash['orijin']
+      origin = hash['origin']
       type = hash['type']
       value = hash['value']
 
       # Create object from extracted values.
-      Discount.new(orijin,
+      Discount.new(origin,
                    type,
                    value)
     end

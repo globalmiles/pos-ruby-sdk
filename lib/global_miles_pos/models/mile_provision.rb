@@ -5,31 +5,38 @@ module GlobalMilesPos
   # MileProvision Model.
   class MileProvision < BaseModel
     # Provision ID
-    # @return [String]
-    attr_accessor :bonus_payment_provision_id
-
-    # Used Bonus Amount
     # @return [Integer]
-    attr_accessor :used_bonus_amount
+    attr_accessor :miles_payment_provision_id
 
-    # Date/time
+    # Used amount
+    # @return [Float]
+    attr_accessor :used_miles_as_amount
+
+    # ISO-4217 3-letter currency code.
+    # @return [String]
+    attr_accessor :currency
+
+    # Date time of the mile provision.
     # @return [String]
     attr_accessor :date_time
 
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
-      @_hash['bonus_payment_provision_id'] = 'bonusPaymentProvisionId'
-      @_hash['used_bonus_amount'] = 'usedBonusAmount'
-      @_hash['date_time'] = 'dateTime'
+      @_hash['miles_payment_provision_id'] = 'miles_payment_provision_id'
+      @_hash['used_miles_as_amount'] = 'used_miles_as_amount'
+      @_hash['currency'] = 'currency'
+      @_hash['date_time'] = 'date_time'
       @_hash
     end
 
-    def initialize(bonus_payment_provision_id = nil,
-                   used_bonus_amount = nil,
+    def initialize(miles_payment_provision_id = nil,
+                   used_miles_as_amount = nil,
+                   currency = nil,
                    date_time = nil)
-      @bonus_payment_provision_id = bonus_payment_provision_id
-      @used_bonus_amount = used_bonus_amount
+      @miles_payment_provision_id = miles_payment_provision_id
+      @used_miles_as_amount = used_miles_as_amount
+      @currency = currency
       @date_time = date_time
     end
 
@@ -38,13 +45,15 @@ module GlobalMilesPos
       return nil unless hash
 
       # Extract variables from the hash.
-      bonus_payment_provision_id = hash['bonusPaymentProvisionId']
-      used_bonus_amount = hash['usedBonusAmount']
-      date_time = hash['dateTime']
+      miles_payment_provision_id = hash['miles_payment_provision_id']
+      used_miles_as_amount = hash['used_miles_as_amount']
+      currency = hash['currency']
+      date_time = hash['date_time']
 
       # Create object from extracted values.
-      MileProvision.new(bonus_payment_provision_id,
-                        used_bonus_amount,
+      MileProvision.new(miles_payment_provision_id,
+                        used_miles_as_amount,
+                        currency,
                         date_time)
     end
   end

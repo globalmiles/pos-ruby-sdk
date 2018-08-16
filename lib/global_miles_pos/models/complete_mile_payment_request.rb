@@ -4,32 +4,25 @@
 module GlobalMilesPos
   # CompleteMilePaymentRequest Model.
   class CompleteMilePaymentRequest < BaseModel
-    # Provision ID
+    # Terminal ID.
     # @return [String]
-    attr_accessor :bonus_payment_provision_id
+    attr_accessor :terminal_id
 
-    # Terminal code.
-    # @return [String]
-    attr_accessor :okc_sicil_no
-
-    # One time password that sends to customer phone
+    # One time password that sends to customer phone.
     # @return [String]
     attr_accessor :otp
 
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
-      @_hash['bonus_payment_provision_id'] = 'bonusPaymentProvisionId'
-      @_hash['okc_sicil_no'] = 'OKCSicilNo'
-      @_hash['otp'] = 'OTP'
+      @_hash['terminal_id'] = 'terminal_id'
+      @_hash['otp'] = 'otp'
       @_hash
     end
 
-    def initialize(bonus_payment_provision_id = nil,
-                   okc_sicil_no = nil,
+    def initialize(terminal_id = nil,
                    otp = nil)
-      @bonus_payment_provision_id = bonus_payment_provision_id
-      @okc_sicil_no = okc_sicil_no
+      @terminal_id = terminal_id
       @otp = otp
     end
 
@@ -38,13 +31,11 @@ module GlobalMilesPos
       return nil unless hash
 
       # Extract variables from the hash.
-      bonus_payment_provision_id = hash['bonusPaymentProvisionId']
-      okc_sicil_no = hash['OKCSicilNo']
-      otp = hash['OTP']
+      terminal_id = hash['terminal_id']
+      otp = hash['otp']
 
       # Create object from extracted values.
-      CompleteMilePaymentRequest.new(bonus_payment_provision_id,
-                                     okc_sicil_no,
+      CompleteMilePaymentRequest.new(terminal_id,
                                      otp)
     end
   end

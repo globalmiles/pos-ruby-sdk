@@ -2,8 +2,8 @@
 # ( https://apimatic.io ).
 
 module GlobalMilesPos
-  # TransactionResultResponse Model.
-  class TransactionResultResponse < BaseModel
+  # GetMileProvisionsResponse Model.
+  class GetMileProvisionsResponse < BaseModel
     # 0  Success, 1 and bigger than 1 unsuccessful.
     # @return [Integer]
     attr_accessor :return_code
@@ -12,32 +12,25 @@ module GlobalMilesPos
     # @return [String]
     attr_accessor :return_desc
 
-    # Text data to be used for printing the receipt.
-    # @return [String]
-    attr_accessor :qr_data
-
-    # Extra information for generel usage.
-    # @return [String]
-    attr_accessor :extra_info
+    # A collection of the payments.
+    # @return [List of MileProvision]
+    attr_accessor :payment_provisions
 
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
       @_hash['return_code'] = 'return_code'
       @_hash['return_desc'] = 'return_desc'
-      @_hash['qr_data'] = 'qr_data'
-      @_hash['extra_info'] = 'extra_info'
+      @_hash['payment_provisions'] = 'payment_provisions'
       @_hash
     end
 
     def initialize(return_code = nil,
                    return_desc = nil,
-                   qr_data = nil,
-                   extra_info = nil)
+                   payment_provisions = nil)
       @return_code = return_code
       @return_desc = return_desc
-      @qr_data = qr_data
-      @extra_info = extra_info
+      @payment_provisions = payment_provisions
     end
 
     # Creates an instance of the object from a hash.
@@ -47,14 +40,19 @@ module GlobalMilesPos
       # Extract variables from the hash.
       return_code = hash['return_code']
       return_desc = hash['return_desc']
-      qr_data = hash['qr_data']
-      extra_info = hash['extra_info']
+      # Parameter is an array, so we need to iterate through it
+      payment_provisions = nil
+      unless hash['payment_provisions'].nil?
+        payment_provisions = []
+        hash['payment_provisions'].each do |structure|
+          payment_provisions << (MileProvision.from_hash(structure) if structure)
+        end
+      end
 
       # Create object from extracted values.
-      TransactionResultResponse.new(return_code,
+      GetMileProvisionsResponse.new(return_code,
                                     return_desc,
-                                    qr_data,
-                                    extra_info)
+                                    payment_provisions)
     end
   end
 end

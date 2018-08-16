@@ -4,96 +4,124 @@
 module GlobalMilesPos
   # TransactionResultRequest Model.
   class TransactionResultRequest < BaseModel
-    # Total Receipt Amount  ex:12.35 TL == 1235
-    # @return [Integer]
+    # Total receipt amount.
+    # @return [Float]
     attr_accessor :total_receipt_amount
 
-    # Total VAT Amount  ex: 0.85 TL == 85
-    # @return [Integer]
+    # Total tax amount.
+    # @return [Float]
     attr_accessor :total_vat_amount
 
-    # Terminal code.
+    # ISO-4217 3-letter currency code.
     # @return [String]
-    attr_accessor :okc_sicil_no
+    attr_accessor :currency
 
-    # ReceiptNo
+    # Partner ID.
     # @return [Integer]
-    attr_accessor :receipt_no
+    attr_accessor :partner_id
 
-    # Z no
+    # Branch ID.
     # @return [Integer]
-    attr_accessor :zno
+    attr_accessor :branch_id
 
-    # Session based Identification Number .
+    # Terminal ID.
+    # @return [String]
+    attr_accessor :terminal_id
+
+    # Receipt number.
+    # @return [String]
+    attr_accessor :receipt_number
+
+    # Extra number 1.
+    # @return [String]
+    attr_accessor :extra_number_1
+
+    # Extra number 2.
+    # @return [String]
+    attr_accessor :extra_number_2
+
+    # Session based identification number.
     # @return [Integer]
     attr_accessor :recognition_id
 
-    # Eku no (Electronic Journal)
-    # @return [Integer]
-    attr_accessor :eku_no
-
-    # Receipt Type (Invoice , Food ..)
+    # Receipt type (Invoice , Food ..)
     # @return [String]
     attr_accessor :receipt_type
 
-    # It should be  GGAAYYYYSSDD formatted.
+    # It should be DDMMYYYYHHMM formatted.
     # @return [String]
     attr_accessor :receipt_date_time
 
-    # Invoice detail info
+    # Invoice details.
     # @return [Invoice]
     attr_accessor :invoice_info
 
-    # Payment Detail Block
+    # Payment details.
     # @return [List of Payment]
     attr_accessor :payments
 
-    # Payment Detail Block
+    # Discount details.
     # @return [List of Discount]
     attr_accessor :discounts
+
+    # Extra data.
+    # @return [String]
+    attr_accessor :extra_data
 
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
-      @_hash['total_receipt_amount'] = 'totalReceiptAmount'
-      @_hash['total_vat_amount'] = 'totalVATAmount'
-      @_hash['okc_sicil_no'] = 'OKCSicilNo'
-      @_hash['receipt_no'] = 'ReceiptNo'
-      @_hash['zno'] = 'Zno'
-      @_hash['recognition_id'] = 'recognitionId'
-      @_hash['eku_no'] = 'EkuNo'
-      @_hash['receipt_type'] = 'ReceiptType'
-      @_hash['receipt_date_time'] = 'ReceiptDateTime'
-      @_hash['invoice_info'] = 'InvoiceInfo'
-      @_hash['payments'] = 'Payments'
-      @_hash['discounts'] = 'Discounts'
+      @_hash['total_receipt_amount'] = 'total_receipt_amount'
+      @_hash['total_vat_amount'] = 'total_vat_amount'
+      @_hash['currency'] = 'currency'
+      @_hash['partner_id'] = 'partner_id'
+      @_hash['branch_id'] = 'branch_id'
+      @_hash['terminal_id'] = 'terminal_id'
+      @_hash['receipt_number'] = 'receipt_number'
+      @_hash['extra_number_1'] = 'extra_number_1'
+      @_hash['extra_number_2'] = 'extra_number_2'
+      @_hash['recognition_id'] = 'recognition_id'
+      @_hash['receipt_type'] = 'receipt_type'
+      @_hash['receipt_date_time'] = 'receipt_date_time'
+      @_hash['invoice_info'] = 'invoice_info'
+      @_hash['payments'] = 'payments'
+      @_hash['discounts'] = 'discounts'
+      @_hash['extra_data'] = 'extra_data'
       @_hash
     end
 
     def initialize(total_receipt_amount = nil,
                    total_vat_amount = nil,
-                   okc_sicil_no = nil,
-                   receipt_no = nil,
-                   zno = nil,
+                   currency = nil,
+                   partner_id = nil,
+                   branch_id = nil,
+                   terminal_id = nil,
+                   receipt_number = nil,
+                   extra_number_1 = nil,
+                   extra_number_2 = nil,
                    recognition_id = nil,
-                   eku_no = nil,
                    receipt_type = nil,
                    receipt_date_time = nil,
                    invoice_info = nil,
                    payments = nil,
-                   discounts = nil)
+                   discounts = nil,
+                   extra_data = nil)
       @total_receipt_amount = total_receipt_amount
       @total_vat_amount = total_vat_amount
-      @okc_sicil_no = okc_sicil_no
-      @receipt_no = receipt_no
-      @zno = zno
+      @currency = currency
+      @partner_id = partner_id
+      @branch_id = branch_id
+      @terminal_id = terminal_id
+      @receipt_number = receipt_number
+      @extra_number_1 = extra_number_1
+      @extra_number_2 = extra_number_2
       @recognition_id = recognition_id
-      @eku_no = eku_no
       @receipt_type = receipt_type
       @receipt_date_time = receipt_date_time
       @invoice_info = invoice_info
       @payments = payments
       @discounts = discounts
+      @extra_data = extra_data
     end
 
     # Creates an instance of the object from a hash.
@@ -101,47 +129,55 @@ module GlobalMilesPos
       return nil unless hash
 
       # Extract variables from the hash.
-      total_receipt_amount = hash['totalReceiptAmount']
-      total_vat_amount = hash['totalVATAmount']
-      okc_sicil_no = hash['OKCSicilNo']
-      receipt_no = hash['ReceiptNo']
-      zno = hash['Zno']
-      recognition_id = hash['recognitionId']
-      eku_no = hash['EkuNo']
-      receipt_type = hash['ReceiptType']
-      receipt_date_time = hash['ReceiptDateTime']
-      invoice_info = Invoice.from_hash(hash['InvoiceInfo']) if
-        hash['InvoiceInfo']
+      total_receipt_amount = hash['total_receipt_amount']
+      total_vat_amount = hash['total_vat_amount']
+      currency = hash['currency']
+      partner_id = hash['partner_id']
+      branch_id = hash['branch_id']
+      terminal_id = hash['terminal_id']
+      receipt_number = hash['receipt_number']
+      extra_number_1 = hash['extra_number_1']
+      extra_number_2 = hash['extra_number_2']
+      recognition_id = hash['recognition_id']
+      receipt_type = hash['receipt_type']
+      receipt_date_time = hash['receipt_date_time']
+      invoice_info = Invoice.from_hash(hash['invoice_info']) if
+        hash['invoice_info']
       # Parameter is an array, so we need to iterate through it
       payments = nil
-      unless hash['Payments'].nil?
+      unless hash['payments'].nil?
         payments = []
-        hash['Payments'].each do |structure|
+        hash['payments'].each do |structure|
           payments << (Payment.from_hash(structure) if structure)
         end
       end
       # Parameter is an array, so we need to iterate through it
       discounts = nil
-      unless hash['Discounts'].nil?
+      unless hash['discounts'].nil?
         discounts = []
-        hash['Discounts'].each do |structure|
+        hash['discounts'].each do |structure|
           discounts << (Discount.from_hash(structure) if structure)
         end
       end
+      extra_data = hash['extra_data']
 
       # Create object from extracted values.
       TransactionResultRequest.new(total_receipt_amount,
                                    total_vat_amount,
-                                   okc_sicil_no,
-                                   receipt_no,
-                                   zno,
+                                   currency,
+                                   partner_id,
+                                   branch_id,
+                                   terminal_id,
+                                   receipt_number,
+                                   extra_number_1,
+                                   extra_number_2,
                                    recognition_id,
-                                   eku_no,
                                    receipt_type,
                                    receipt_date_time,
                                    invoice_info,
                                    payments,
-                                   discounts)
+                                   discounts,
+                                   extra_data)
     end
   end
 end

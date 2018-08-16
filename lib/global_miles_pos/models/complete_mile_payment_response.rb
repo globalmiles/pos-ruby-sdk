@@ -4,19 +4,19 @@
 module GlobalMilesPos
   # CompleteMilePaymentResponse Model.
   class CompleteMilePaymentResponse < BaseModel
-    # 0  Success, 1 and bigger than 1 unsuccessful
+    # 0  Success, 1 and bigger than 1 unsuccessful.
     # @return [Integer]
     attr_accessor :return_code
 
-    # if success return is empty. if unsuccessful it returns error message
+    # if success return is empty. if unsuccessful it returns error message.
     # @return [String]
     attr_accessor :return_desc
 
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
-      @_hash['return_code'] = 'returnCode'
-      @_hash['return_desc'] = 'returnDesc'
+      @_hash['return_code'] = 'return_code'
+      @_hash['return_desc'] = 'return_desc'
       @_hash
     end
 
@@ -31,8 +31,8 @@ module GlobalMilesPos
       return nil unless hash
 
       # Extract variables from the hash.
-      return_code = hash['returnCode']
-      return_desc = hash['returnDesc']
+      return_code = hash['return_code']
+      return_desc = hash['return_desc']
 
       # Create object from extracted values.
       CompleteMilePaymentResponse.new(return_code,
