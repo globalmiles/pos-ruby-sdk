@@ -4,32 +4,32 @@
 module GlobalMilesPos
   # Invoice Model.
   class Invoice < BaseModel
-    # TODO: Write general description for this method
+    # Type of the invoice.
     # @return [String]
     attr_accessor :invoice_type
 
-    # TODO: Write general description for this method
+    # Number of the invoice.
     # @return [String]
-    attr_accessor :invoice_no
+    attr_accessor :invoice_number
 
-    # TODO: Write general description for this method
+    # Date of the invoice.
     # @return [String]
     attr_accessor :invoice_date
 
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
-      @_hash['invoice_type'] = 'invoiceType'
-      @_hash['invoice_no'] = 'invoiceNo'
-      @_hash['invoice_date'] = 'invoiceDate'
+      @_hash['invoice_type'] = 'invoice_type'
+      @_hash['invoice_number'] = 'invoice_number'
+      @_hash['invoice_date'] = 'invoice_date'
       @_hash
     end
 
     def initialize(invoice_type = nil,
-                   invoice_no = nil,
+                   invoice_number = nil,
                    invoice_date = nil)
       @invoice_type = invoice_type
-      @invoice_no = invoice_no
+      @invoice_number = invoice_number
       @invoice_date = invoice_date
     end
 
@@ -38,13 +38,13 @@ module GlobalMilesPos
       return nil unless hash
 
       # Extract variables from the hash.
-      invoice_type = hash['invoiceType']
-      invoice_no = hash['invoiceNo']
-      invoice_date = hash['invoiceDate']
+      invoice_type = hash['invoice_type']
+      invoice_number = hash['invoice_number']
+      invoice_date = hash['invoice_date']
 
       # Create object from extracted values.
       Invoice.new(invoice_type,
-                  invoice_no,
+                  invoice_number,
                   invoice_date)
     end
   end

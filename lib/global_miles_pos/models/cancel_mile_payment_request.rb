@@ -4,26 +4,19 @@
 module GlobalMilesPos
   # CancelMilePaymentRequest Model.
   class CancelMilePaymentRequest < BaseModel
-    # Provision ID
+    # Terminal ID.
     # @return [String]
-    attr_accessor :bonus_payment_provision_id
-
-    # Terminal code.
-    # @return [String]
-    attr_accessor :okc_sicil_no
+    attr_accessor :terminal_id
 
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
-      @_hash['bonus_payment_provision_id'] = 'bonusPaymentProvisionId'
-      @_hash['okc_sicil_no'] = 'OKCSicilNo'
+      @_hash['terminal_id'] = 'terminal_id'
       @_hash
     end
 
-    def initialize(bonus_payment_provision_id = nil,
-                   okc_sicil_no = nil)
-      @bonus_payment_provision_id = bonus_payment_provision_id
-      @okc_sicil_no = okc_sicil_no
+    def initialize(terminal_id = nil)
+      @terminal_id = terminal_id
     end
 
     # Creates an instance of the object from a hash.
@@ -31,12 +24,10 @@ module GlobalMilesPos
       return nil unless hash
 
       # Extract variables from the hash.
-      bonus_payment_provision_id = hash['bonusPaymentProvisionId']
-      okc_sicil_no = hash['OKCSicilNo']
+      terminal_id = hash['terminal_id']
 
       # Create object from extracted values.
-      CancelMilePaymentRequest.new(bonus_payment_provision_id,
-                                   okc_sicil_no)
+      CancelMilePaymentRequest.new(terminal_id)
     end
   end
 end

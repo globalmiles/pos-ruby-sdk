@@ -4,40 +4,47 @@
 module GlobalMilesPos
   # StartMilePaymentRequest Model.
   class StartMilePaymentRequest < BaseModel
-    # Total Receipt Amount  ex:12.35 TL == 1235
-    # @return [Integer]
+    # Total receipt amount.
+    # @return [Float]
     attr_accessor :total_receipt_amount
 
-    # Used Amount that has been used in the shopping  ex:0.85 TL == 85
-    # @return [Integer]
-    attr_accessor :used_bonus_amount
+    # Used amount that has been used in the shopping.
+    # @return [Float]
+    attr_accessor :used_miles_as_amount
 
-    # Session based user identification number
+    # ISO-4217 3-letter currency code.
+    # @return [String]
+    attr_accessor :currency
+
+    # Session based user identification number.
     # @return [Integer]
     attr_accessor :recognition_id
 
-    # Terminal code.
+    # Terminal ID.
     # @return [String]
-    attr_accessor :okc_sicil_no
+    attr_accessor :terminal_id
 
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
-      @_hash['total_receipt_amount'] = 'totalReceiptAmount'
-      @_hash['used_bonus_amount'] = 'usedBonusAmount'
-      @_hash['recognition_id'] = 'recognitionId'
-      @_hash['okc_sicil_no'] = 'OKCSicilNo'
+      @_hash['total_receipt_amount'] = 'total_receipt_amount'
+      @_hash['used_miles_as_amount'] = 'used_miles_as_amount'
+      @_hash['currency'] = 'currency'
+      @_hash['recognition_id'] = 'recognition_id'
+      @_hash['terminal_id'] = 'terminal_id'
       @_hash
     end
 
     def initialize(total_receipt_amount = nil,
-                   used_bonus_amount = nil,
+                   used_miles_as_amount = nil,
+                   currency = nil,
                    recognition_id = nil,
-                   okc_sicil_no = nil)
+                   terminal_id = nil)
       @total_receipt_amount = total_receipt_amount
-      @used_bonus_amount = used_bonus_amount
+      @used_miles_as_amount = used_miles_as_amount
+      @currency = currency
       @recognition_id = recognition_id
-      @okc_sicil_no = okc_sicil_no
+      @terminal_id = terminal_id
     end
 
     # Creates an instance of the object from a hash.
@@ -45,16 +52,18 @@ module GlobalMilesPos
       return nil unless hash
 
       # Extract variables from the hash.
-      total_receipt_amount = hash['totalReceiptAmount']
-      used_bonus_amount = hash['usedBonusAmount']
-      recognition_id = hash['recognitionId']
-      okc_sicil_no = hash['OKCSicilNo']
+      total_receipt_amount = hash['total_receipt_amount']
+      used_miles_as_amount = hash['used_miles_as_amount']
+      currency = hash['currency']
+      recognition_id = hash['recognition_id']
+      terminal_id = hash['terminal_id']
 
       # Create object from extracted values.
       StartMilePaymentRequest.new(total_receipt_amount,
-                                  used_bonus_amount,
+                                  used_miles_as_amount,
+                                  currency,
                                   recognition_id,
-                                  okc_sicil_no)
+                                  terminal_id)
     end
   end
 end
