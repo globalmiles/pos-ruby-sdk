@@ -243,7 +243,7 @@ def delete_cancel_mile_payment(miles_payment_provision_id,
 #### Example Usage
 
 ```ruby
-miles_payment_provision_id = 142
+miles_payment_provision_id = 239
 body = CancelMilePaymentRequest.new
 
 result = payWithMiles_controller.delete_cancel_mile_payment(miles_payment_provision_id, body)
@@ -275,7 +275,7 @@ def update_complete_mile_payment(miles_payment_provision_id,
 #### Example Usage
 
 ```ruby
-miles_payment_provision_id = 142
+miles_payment_provision_id = 239
 body = CompleteMilePaymentRequest.new
 
 result = payWithMiles_controller.update_complete_mile_payment(miles_payment_provision_id, body)
@@ -510,11 +510,11 @@ def get_customer_info(read_code,
 ```ruby
 read_code = 'read_code'
 read_code_type = 'read_code_type'
-total_amount = 142.156104444133
-total_vat_amount = 142.156104444133
+total_amount = 239.494172504402
+total_vat_amount = 239.494172504402
 currency = 'currency'
-partner_id = 142
-branch_id = 142
+partner_id = 239
+branch_id = 239
 terminal_id = 'terminal_id'
 
 result = common_controller.get_customer_info(read_code, read_code_type, total_amount, total_vat_amount, currency, partner_id, branch_id, terminal_id)
